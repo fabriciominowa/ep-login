@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-players</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Titillium+Web&display=swap');
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  .container-grid{
+      width: 1200px;
+      height: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  header{
+      background-color: #1E1C21; 
+      height: 80px;
+  }
+  .menu{
+      width: 660px;
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .menu a{
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+  }
+  
+  
+  .barras{
+      width: 30px;
+      display: none;
+  }
+  
+  .banner{
+      background-image: url(../img/banner.png);
+      height: 600px;
+      background-repeat: none;
+      background-size: cover;
+  }
+  
+  #carrosel img{
+      display: none;
+  }
+  
+  .banner-ativo{
+      display: flex;
+  }
+  .posicao-texto{
+      justify-content: flex-end;
+  }
+  
+  .texto-banner{
+      width: 495px;
+      color: white;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+      font-size: 25px;
+  }
+  
+  .texto-banner h1{
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 75px;
+      font-weight: bold;
+  }
+  
+  .texto-banner a{
+      background-color: #C31616;
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 15px;
+      border-radius: 5px;
+  }
+  
+  .texto-banner p{
+      margin-bottom: 50px;
+  }
+  .secao-jogos{
+      background-color: black;
+  }
+  
+  .jogos{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .jogos img{
+      width: 150px;
+  }
+  .secao-sobre{
+      background-image: url("/img/fundo-sobre.png");
+      background-position: center;
+      background-repeat: none;
+      background-size: cover;
+  }
+  .texto-sobre{
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+  .secao-partidas {
+      background-color: black;
+      height: 90px;
+  }
+  
+  .partidas {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+  }
+  
+  .games-aovivo {
+      width: 300px;
+  }
+  
+  .games-embreve {
+      width: 550px;
+  }
+  
+  .games-aovivo, .games-embreve{
+      display: flex;
+      color:#fff;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  .partidas h2 {
+      text-transform: uppercase;
+      font-size: 25px;
+  }
+  
+  .partida{
+      width: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  .partida p {
+      margin-bottom: 0;
+  }
+  
+  .time1, .time2{
+      display: flex;
+      align-items: center;
+  }
+  .partida img{
+      width: 28px;
+  }
+  .time1 img{
+      margin-left: 8px;
+  }
+  .time2 img{
+      margin-right: 8px;
+  }
+  .secao-noticias {
+      background-color: #1E1C21;
+      padding: 30px 0 ;
+  }
+  .secao-noticias .container {
+      display: flex;
+      justify-content: space-between;
+  }
+  .bloco-noticias{
+      width: 70%;
+      height: 90%;
+      color: white;
+  }
+  .bloco-noticias h2 {
+      font-size: 25px;
+  }
+  .content-news{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 25px;
+  }
+  .cardnews{
+      width: 240px;
+      height: 360px;
+      color: #fff;
+      margin-bottom: 32px;
+      background: var(--gradient);
+      box-shadow: 0px 0px 10px black ,0px 0px 30px black ;
+  }
+  
+  .cardnews h3{
+      padding-left: 20px;
+      padding-top: 5px;
+      font-size: 24px;
+  }
+  .cardnews p{
+      padding-left: 20px;
+      font-size: 16px;
+  }
+  .next-games{
+      width: 25%;   
+  }
+  .next-games h2 {
+      font-size: 25px;
+      color: white;
+      margin-bottom: 25px;
+  }
+  .next-games-bg{
+      height: auto;
+      background: var(--gradient); 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 32px 0;
+      box-shadow: 0px 0px 10px rgb(0, 0, 0),0px 0px 30px rgb(0, 0, 0);
+  }
+  .next-games-match{
+      width: 100%;
+      height: 99px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* background-color: red; */
+      font-weight: 700;
+      color: #fff;
+  }
+  .teams{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+  }
+  .next-games-match div{
+      display: flex;
+      align-items: center;
+  }
+  .next-games-match img{
+      max-width: 40px;
+  }
+  .next-games-match p{
+      margin-top: 16px;
+  }
+  footer {
+      background-color: black;
+  }
+  .rodape {
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+  }
+  .logo-rodape {
+      width: 300px;
+  }
+  .sociais h2 {
+      color: white;
+      font-size: 14px;
+      margin-bottom: 8px;
+  }
+  .links{
+      color: white;
+  }
+  .links h2{
+      font-size: 24px;
+  }
+  .links a{
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+  }
+  .links-footer{
+      display: flex;
+      justify-content: space-between;
+      width: 400px;
+  }
+  .sociais form {
+      display: flex;    
+      margin-bottom: 8px;
+  }
+  .sociais input[type="email"]{
+      height: 37px;
+      width: 195px;    
+  }
+  .sociais input[type="email"]::placeholder {
+      color: #B8B3B3;
+      font-weight: bold;
+  }
+  .botao-cadastrar{
+      width: 9.75em;
+      color: white;
+      background-color: #8326EF;
+      border: none;
+      font-size: 1.1em;
+  }
+  
+  .siga-nos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.8em;
+  }
+  
+  @media screen and (max-width: 1200px) {
+      .container-grid{
+          width: 90%;
+      }
+      .menu{
+          width: 460px;
+      }
+      .menu a{
+          font-size: 16px;
+      }
+      .logo{
+          width: 200px;
+      }
+  }
+  
+  @media screen and (max-width: 768px) {
+      h1{
+          color:blue;
+      }
+      .barras{
+          display: inline-block;
+      }
+      .menu{
+          display: none;
+          flex-direction: column;
+          width: 200px;
+          position: absolute;
+          top: 0;
+          right: 65px;
+          background-color: black;
+      }
+      .menu a{
+          text-align: center;
+          padding: 15px;
+      }
+      .menu-ativo{
+          display: flex;
+      }
+      .posicionamento-header{
+          position: relative;
+      }
+  }
+  </style>
+<body onload="renderizarNoticias()">
+    <header>
+        <div class="container-grid posicionamento-header">
+            <a href=""><img class="logo" src="/img/logo.svg" alt="Logo do Site E-players"></a>
+            <nav id="menu" class="menu">
+                <a href="">Inicio</a>
+                <a href="login.html">login</a>
+                <a href="">Campeonatos</a>
+                <a href="">Resultados</a>
+                <a href="">Notícias</a>
+            </nav>
+            <a href="#" id="barras"><img class="barras" src="/img/bars.svg" alt="Menu de Barras"></a>
+            <!-- <a href="#" onclick="mostrarMenu()"><img class="barras" src="img/bars.svg" alt="Menu de Barras"></a> -->
+        </div>
+    </header>
+     <div class="banner">
+        <div class="container-grid posicao-texto">
+            <div class="texto-banner">
+                <h1>Liga E-players</h1>
+                <p>O maior portal de campeonato</p>
+                <a href="">Inscreva-se</a>
+            </div>
+        </div>
+    </div> 
+    <div id="carrosel" class="carrosel">
+        <img src="/img/banner_pilotos.png" alt="Banner Pilotos" >
+        <img src="/img/banner_lol.png" alt="Banner Lol" >
+        <img src="s/img/banner_lol.png" alt="Banner Cs" >
+        
+    </div>
+    <section class="secao-jogos">
+        <div class="jogos container">
+            <a href=""><img src="./img/f1-logo.png" alt="Logo da Formula 1"></a>
+            <a href=""><img src="./img/lol-logo.png" alt="Logo do League of Legends"></a>
+            <a href=""><img src="./img/cs-logo.png" alt="Logo do Counter Strike"></a>
+            <a href=""><img src="/img/cs-logo.png" alt="Logo do Valorant"></a>
+            <a href=""><img src="/img/fifa.png" alt="Logo do fifa"></a>
+        </div>
+    </section>
+    <section class="secao-sobre">
+        <div class="conteudo-sobre container">
+            <div class="row">
+                <div class="texto-sobre col">
+                    <h2>Como participar das ligas</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                        type
+                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
+                        the
+                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the .
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                        type
+                        and scrambled it to make a type specimen boook.</p>
+                </div>
+                <div class="container-imagem col">
+                    <img src="/img/campeao-lol.png" alt="Imagem do campeão do League of Legends">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="secao-partidas">
+        <div class="partidas container">
+            <div class="games-aovivo">
+                <h2>Ao<br>Vivo</h2>
+                <div class="partida">
+                    <div class="time1">
+                        <p>SK</p>
+                        <img src="img/SK 1.png" alt="Logo do time 1">
+                    </div>
+                    <p>VS</p>
+                    <div class="time2">
+                        <img src="img/SK 1.png" alt="Logo time 2">
+                        <p>VRS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="games-embreve">
+                <h2>Em<br>Breve</h2>
+                <div class="partida">
+                    <div class="time1">
+                        <p>SK</p>
+                        <img src="img/SK 1.png" alt="Logo do time 1">
+                    </div>
+                    <p>VS</p>
+                    <div class="time2">
+                        <img src="img/SK 1.png" alt="Logo time 2">
+                        <p>VRS</p>
+                    </div>
+                </div>
+                <div class="partida">
+                    <div class="time1">
+                        <p>SK</p>
+                        <img src="img/SK 1.png" alt="Logo do time 1">
+                    </div>
+                    <p>VS</p>
+                    <div class="time2">
+                        <img src="img/SK 1.png" alt="Logo time 2">
+                        <p>VRS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="secao-noticias">
+        <div class="container">
+            <div class="bloco-noticias">
+                <h2>Notícias</h2>
+                <div id="espaco-noticias" class="content-news">
+                    <div class="cardnews">
+                        <img src="img/cardnews.jpg" alt="Foto da jogadora profissional">
+                        <h3>Título da notícia</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil doloremque sed nobis
+                            aliquam nam saepe assumenda, distinctio nulla tempora velit.</p>
+                    </div>
+                    <div class="cardnews">
+                        <img src="img/cardnews.jpg" alt="Foto da jogadora profissional">
+                        <h3>Título da notícia</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil doloremque sed nobis
+                            aliquam nam saepe assumenda, distinctio nulla tempora velit.</p>
+                    </div>
+                    <div class="cardnews">
+                        <img src="img/cardnews.jpg" alt="Foto da jogadora profissional">
+                        <h3>Título da notícia</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil doloremque sed nobis
+                            aliquam nam saepe assumenda, distinctio nulla tempora velit.</p>
+                    </div>
+                    <div class="cardnews">
+                        <img src="img/cardnews.jpg" alt="Foto da jogadora profissional">
+                        <h3>Título da notícia</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil doloremque sed nobis
+                            aliquam nam saepe assumenda, distinctio nulla tempora velit.</p>
+                    </div>
+                    <div class="cardnews">
+                        <img src="img/cardnews.jpg" alt="Foto da jogadora profissional">
+                        <h3>Título da notícia</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil doloremque sed nobis
+                            aliquam nam saepe assumenda, distinctio nulla tempora velit.</p>
+                    </div>
+                    <div class="cardnews">
+                        <img src="img/cardnews.jpg" alt="Foto da jogadora profissional">
+                        <h3>Título da notícia</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil doloremque sed nobis
+                            aliquam nam saepe assumenda, distinctio nulla tempora velit.</p>
+                    </div> 
+                </div>
+            </div>
+            <aside class="next-games">
+                <h2>Próximos Jogos</h2>
+                <div class="next-games-bg">
+                    <div class="next-games-match">
+                        <div class="teams">
+                            <div>
+                                <p>VRS</p>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                            </div>
+                            <p>VS</p>
+                            <div>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                                <p>SK</p>
+                            </div>
+                        </div>
+                        <!--Fim Teams-->
+                        <p>03/12/2020 19:00</p>
+                    </div>
+                    <!--Fim Games Match-->
+                    <div class="next-games-match">
+                        <div class="teams">
+                            <div>
+                                <p>VRS</p>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                            </div>
+                            <p>VS</p>
+                            <div>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                                <p>SK</p>
+                            </div>
+                        </div>
+                        <!--Fim Teams-->
+                        <p>03/12/2020 19:00</p>
+                    </div>
+                    <!--Fim Games Match-->
+                    <div class="next-games-match">
+                        <div class="teams">
+                            <div>
+                                <p>VRS</p>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                            </div>
+                            <p>VS</p>
+                            <div>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                                <p>SK</p>
+                            </div>
+                        </div>
+                        <!--Fim Teams-->
+                        <p>03/12/2020 19:00</p>
+                    </div>
+                    <!--Fim Games Match-->
+
+                    <div class="next-games-match">
+                        <div class="teams">
+                            <div>
+                                <p>VRS</p>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                            </div>
+                            <p>VS</p>
+                            <div>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                                <p>SK</p>
+                            </div>
+                        </div>
+                        <!--Fim Teams-->
+                        <p>03/12/2020 19:00</p>
+                    </div>
+                    <!--Fim Games Match-->
+                    <div class="next-games-match">
+                        <div class="teams">
+                            <div>
+                                <p>VRS</p>
+                                <img src="/img/SK 1.png " alt="Logo do Time">
+                            </div>
+                            <p>VS</p>
+                            <div>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                                <p>SK</p>
+                            </div>
+                        </div>
+                        <!--Fim Teams-->
+                        <p>03/12/2020 19:00</p>
+                    </div>
+                    <!--Fim Games Match-->
+                    <div class="next-games-match">
+                        <div class="teams">
+                            <div>
+                                <p>VRS</p>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                            </div>
+                            <p>VS</p>
+                            <div>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                                <p>SK</p>
+                            </div>
+                        </div>
+                        <!--Fim Teams-->
+                        <p>03/12/2020 19:00</p>
+                    </div>
+                    <!--Fim Games Match-->
+                    <div class="next-games-match">
+                        <div class="teams">
+                            <div>
+                                <p>VRS</p>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                            </div>
+                            <p>VS</p>
+                            <div>
+                                <img src="img/SK 1.png" alt="Logo do Time">
+                                <p>SK</p>
+                            </div>
+                        </div>
+                        <!--Fim Teams-->
+                        <p>03/12/2020 19:00</p>
+                    </div>
+                    <!--Fim Games Match-->
+
+                </div>
+            </aside>
+        </div>
+    </section>
+    <footer>
+        <div class="container rodape">
+            <div class="links-footer">
+                <div class="links">
+                    <h2>Links Úteis</h2>
+                    <ul>
+                        <li><a href="#">Regras de utilização</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="links">
+                    <h2>Páginas</h2>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Campeonatos</a></li>
+                        <li><a href="#">Resultados</a></li>
+                        <li><a href="#">Notícias</a></li>
+                        <li><a href="#">Login/Cadastro</a></li>
+                    </ul>
+                </div>
+            </div>
+            <img class="logo-rodape" src="img/logo.svg" alt="Logo E-Players">
+            <div class="sociais">
+                <h2>Faça parte do nosso clan, receba notícias e promoções!</h2>
+
+                <form action="">
+                    <input id="campo-email" type="email" placeholder="E-mail" required>
+                    <button onclick="enviarEmail()" class="botao-cadastrar">Cadastrar</button>
+                </form>
+
+                <div class="siga-nos">
+                    <h2>Siga-nos em:</h2>
+                    <a href="#"><img src="img/logo-instagram.png" alt="Logo do Instagram"></a>
+                    <a href="#"><img src="img/logo-facebook.png" alt="Logo do Facebook"></a>
+                    <a href="#"><img src="img/logo-yt.png" alt="Logo do Youtube"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

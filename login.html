@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  .container-grid{
+      width: 1200px;
+      height: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  header{
+      background-color: #1E1C21; 
+      height: 80px;
+  }
+  .menu{
+      width: 660px;
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .menu a{
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+  }
+    body{
+        background-color: black;
+    }
+    main {
+    background-color: black;
+    padding: 100px 0;
+
+    color: white;
+}
+
+form {
+    width: 40%;
+    height: 400px;
+    margin: 0 auto;
+    padding: 100px 0;
+    margin-top: 100px;
+    background-color: #1E1C21;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+form button {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.campo-label {
+    width: 60%;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    text-indent: 5px;
+}
+
+input, button {
+    height: 35px;
+    border-radius: 4px;
+    border: none;
+}
+
+button {
+    background-color: #C31616;    
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+p {
+    text-align: center;
+}
+</style>
+<body>
+   
+    <form (ngSubmit)="onSubmit()">
+        <div class="campo-label">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="campo-email" placeholder="Ex.: email@email.com" >
+        </div>
+        
+        <div class="campo-label">
+            <label for="senha">Senha</label>
+            <input type="password" name="password" id="senha" placeholder="Sua senha aqui...">
+        </div>
+
+        <button type="submit">Fazer Login</button>
+    </form>
+</body>
+</html>
